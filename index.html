@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="access-app.js"></script>
     <title>Title</title>
 </head>
-    <body ng-controller="UsersCtrl as access">
+    <body ng-controller="AccessCtrl as access">
       <div class="text-center">
           <h3>Access management</h3>
       </div>
@@ -22,7 +19,10 @@
 <div class="form-group col-md-10">
 <label class="sr-only" for="search-input"></label>
 <div class="input-group">
-  <input type="text" class="form-control col-md-10" placeholder="Search">
+  <input type="text" class="form-control col-md-10" list="results" placeholder="Search" ng-model="search">
+  <datalist id="results" ng-repeat="user in users">
+    <option value="{{users.name}}"></option>
+  </datalist>
 </div>
 </div>
 <button class="btn btn-default dropdown-toggle col-md-2" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -45,26 +45,13 @@ Read
         <li role="presentation"><a href="#">Added</a></li>
 
       </ul>
-          <table class="table table-striped">
-              <thead>
-              <tr>
-                  <th class="col-md-5">Name</th>
-                  <th class="col-md-2">Rights</th>
-
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-mouseover="icon=true" ng-repeat="user in users">
-                  <td class="col-md-5">{{users.name}}</td>
-                  <td class="col-md-2">{{users.rights | filter:'current'}}</td>
-                  <td class="col-sm-1"><a href="#" ng-show="icon" ng-click=""><i class="glyphicon glyphicon-remove"></i></a></td>
-
-              </tr>
-              </tbody>
-          </table>
+          <users></users>
         </div>
       </div>
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     </body>
 </html>
