@@ -1,7 +1,7 @@
 
+
   var app = angular.module('accessApp', []);
-    app.controller('AccessCtrl', AccessCtrl);
-    function AccessCtrl(UsersService) {
+    app.controller('AccessCtrl', function ($scope, UsersService) {
       $scope.users = UsersService.getAll();
   });
 
