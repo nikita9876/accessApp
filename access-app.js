@@ -3,14 +3,19 @@
   var app = angular.module('accessApp', []);
     app.controller('AccessCtrl', function ($scope, UsersService) {
       $scope.users = UsersService.getAll();
+      console.log($scope.users);
+
+      $scope.delete = function(user) {
+        $scope.users.splice($scope.users.indexOf(user), 1);
+        };
   });
 
-  app.directive('Users', function() {
+  app.directive('users', function() {
     return {
       restrict: 'E',
       replace: true,
       scope: {
-        user: '='
+        users: '='
       },
       templateUrl: 'users.html'
     }
@@ -24,9 +29,6 @@
           {name:'Arnold Morris', rights:'write'},
           {name:'Stacy Martin', rights:'admin'}
         ];
-        this.getOne = function(id) {
-          return users[id];
-        };
 
         this.getAll = function() {
           return users;
