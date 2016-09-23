@@ -10,10 +10,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+
+
 
     <title>Title</title>
 </head>
@@ -29,27 +33,23 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="col-md-6">
-                    <input type="text" class="form-control search-input" list="results" placeholder="Search"
+                    <input type="text" name="add" class="form-control search-input" list="results" placeholder="Search"
                            ng-model="search">
                     <datalist id="results" ng-repeat="other in others">
                         <option value="{{other.name}}"></option>
                     </datalist>
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-primary" >Add</button>
+                <button type="button" class="btn btn-primary">Add</button>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-3">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="current">
-                    Read
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Read</a></li>
-                    <li><a href="#">Write</a></li>
-                    <li><a href="#">Admin</a></li>
-                </ul>
+                <select class="selectpicker col-md-8">
+                    <option>Read</option>
+                    <option>Write</option>
+                    <option>Admin</option>
+                </select>
+
             </div>
         </div>
     </div>
