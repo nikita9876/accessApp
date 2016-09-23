@@ -27,33 +27,36 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3">
-            <div class="input-group">
-                <input type="text" class="form-control" list="results" placeholder="Search"
-                       ng-model="search">
-                <datalist id="results" ng-repeat="user in users">
-                    <option value="{{user.name}}"></option>
-                </datalist>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-6">
+                    <input type="text" class="form-control search-input" list="results" placeholder="Search"
+                           ng-model="search">
+                    <datalist id="results" ng-repeat="other in others">
+                        <option value="{{other.name}}"></option>
+                    </datalist>
             </div>
-        </div>
-        <div class="col-md-6"></div>
-        <div class="col-md-3">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="current">
-                Read
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Read</a></li>
-                <li><a href="#">Write</a></li>
-                <li><a href="#">Admin</a></li>
-            </ul>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary" >Add</button>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="current">
+                    Read
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Read</a></li>
+                    <li><a href="#">Write</a></li>
+                    <li><a href="#">Admin</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <users></users>
+            <users users="users"></users>
         </div>
     </div>
 

@@ -7,10 +7,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-mouseover="icon=true" ng-repeat="user in users | filter:'search'">
+    <tr ng-mouseover="glyphicon=true" ng-repeat="user in users | filter:searchText">
         <td class="col-md-5">{{user.name}}</td>
-        <td class="col-md-2">{{user.rights | filter:'current'}}</td>
-        <td class="col-sm-1"><a href="#" ng-show="icon" ng-click="delete(user)"><i class="glyphicon glyphicon-remove"></i></a></td>
+        <td class="col-md-2">{{user.rights}}</td>
+        <td class="col-sm-1"><a href="#" ng-show="glyphicon" ng-click="delete(user)"><i class="glyphicon glyphicon-remove"></i></a></td>
 
     </tr>
     </tbody>
