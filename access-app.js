@@ -5,33 +5,23 @@ var app = angular.module('accessApp', []);
           {name:'Michelle Hopkins', rights:'read'},
           {name:'Dave Kelley', rights:'read'}
       ];
-      $scope.variations = [
-          {right: 'Read'},
+
+      $scope.select = [
+          {right: 'Admin'},
           {right: 'Write'},
-          {right: 'Admin'}
+          {right: 'Read'}
 
       ];
-      $scope.users = UsersService.getAll();
-        
+
+      $scope.users = UsersService.getUsers();
+
       $scope.delete = UsersService.delete;
 
       $scope.addUser = function() {
-          var found = false;
-          angular.forEach($scope.users, function(val){
-             if($scope.search === val.name){
-                 found = true;
+          UsersService.addUser($scope.search, $scope.access);
+      }
+    });
 
-             }
-          });
-
-          if (!found) {
-              $scope.users.push({
-                  name: $scope.search,
-                  rights: $scope.access
-              })
-          }
-      };
-  });
 
   app.directive('users',function() {
     return {
@@ -47,22 +37,43 @@ var app = angular.module('accessApp', []);
 
   });
 
-  app.service('UsersService', function($http) {
-      var users = [
-        {name:'Paul Marshall', rights:'Read'},
-        {name:'Andy Owens', rights:'Read'},
-        {name:'Arnold Morris', rights:'Write'},
-        {name:'Stacy Martin', rights:'Admin'}
+  app.service('UsersService', function() {
+      this.saved = localStorage.getItem('users');
+      this.users = (localStorage.getItem('users')!==null) ? JSON.parse(this.saved) : [
+          {name:'Paul Marshall', rights:'Read'},
+          {name:'Andy Owens', rights:'Read'},
+          {name:'Arnold Morris', rights:'Write'},
+          {name:'Stacy Martin', rights:'Admin'}
       ];
+      localStorage.setItem('users', JSON.stringify(this.users));
 
-      this.getAll = function() {
-        return users;
+      this.getUsers = function() {
+          return this.users;
       };
 
-        this.delete = function(user) {
-            this.users.splice(this.users.indexOf(user), 1);
-        };
+      this.delete = function(user) {
+          this.users.splice(this.users.indexOf(user), 1);
+          localStorage.setItem('users', JSON.stringify(this.users));
+      };
 
+      this.addUser = function(search, access) {
+          var found = false;
+          angular.forEach(this.users, function(val){
+              if(search === val.name){
+                  found = true;
+
+              }
+          });
+
+          if (!found) {
+              this.users.push({
+                  name: search,
+                  rights: access
+              })
+          }
+          localStorage.setItem('users', JSON.stringify(this.users));
+
+      };
       });
 
 

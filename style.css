@@ -1,0 +1,4 @@
+.ng-invalid .ng-dirty {
+    border-color: #FA787E;
+    box-shadow: 0 0 2px #FA787E;
+}
