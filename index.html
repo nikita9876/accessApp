@@ -15,33 +15,33 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
     <link href="style.css" rel="stylesheet">
-
 
     <title>Title</title>
 </head>
 <body ng-controller="AccessCtrl as access">
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h3 class="text-center">Access management</h3>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <form ng-submit="addUser()">
                 <div class="col-md-8">
-                    <input type="text" name="add" class="form-control search-input" list="results" placeholder="Search"
-                           ng-model="search" required>
+                    <input type="text" name="add" class="form-control search-input"
+                           list="results" placeholder="Search"
+                           ng-model="search" required ng-class="dirty: found">
                     <datalist id="results">
-                        <option  ng-repeat="other in others" value="{{other.name}}"></option>
+                        <option ng-repeat="other in others" value="{{other.name}}"></option>
                     </datalist>
                 </div>
                 <div class="col-md-3">
-                    <select class="selectpicker" ng-model="access" ng-options="selected as selected.right for selected in select track by $index">
+                    <select class="col-md-8 selectpicker" ng-model="access">
+                        <option ng-repeat="item in options track by $index" value="{{item.rights}}">{{item.rights}}</option>
                     </select>
                 </div>
                 <div class="col-md-1">
@@ -50,55 +50,11 @@
             </form>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12">
             <users users="users"></users>
         </div>
     </div>
-
-
 </div>
-<!--<div class="text-center">-->
-<!--<h3>Access management</h3>-->
-<!--</div>-->
-
-<!--<div class="row">-->
-<!--<div class=" col-md-8 col-md-offset-2">-->
-<!--<form class="form-inline">-->
-<!--<div class="form-group col-md-10">-->
-<!--<div class="input-group">-->
-<!--<input type="text" class="form-control" list="results" placeholder="Search"-->
-<!--ng-model="search">-->
-<!--<datalist id="results" ng-repeat="user in users">-->
-<!--<option value="{{user.name}}"></option>-->
-<!--</datalist>-->
-<!--</div>-->
-<!--</div>-->
-<!--<button class="btn btn-default dropdown-toggle col-md-2" type="button" id="dropdownMenu1"-->
-<!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="current">-->
-<!--Read-->
-<!--<span class="caret"></span>-->
-<!--</button>-->
-<!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
-<!--<li><a href="#">Read</a></li>-->
-<!--<li><a href="#">Write</a></li>-->
-<!--<li><a href="#">Admin</a></li>-->
-<!--</ul>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="row">-->
-<!--<div class=" col-md-8 col-md-offset-2">-->
-<!--<ul class="nav nav-tabs">-->
-<!--<li role="presentation" class="active"><a href="#">All</a></li>-->
-<!--<li role="presentation"><a href="#">Added</a></li>-->
-
-<!--</ul>-->
-<!--<users></users>-->
-<!--</div>-->
-<!--</div>-->
-
 </body>
 </html>
